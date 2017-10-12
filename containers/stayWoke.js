@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import stayWoke from '../components/stayWoke';
+import {withRouter} from 'react-router';
+
 const mapStateToProps = (state) => {
 
   return {
@@ -11,8 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   
   return {
-    button: () => {
-      dispatch({type: 'STAY_WOKE'}) 
+    clearIndexArray: () => {
+      dispatch({type: 'CLEAR_INDEX_ARRAY'}) 
     }
   }
 }

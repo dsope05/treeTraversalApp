@@ -2,15 +2,12 @@ import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import {NativeRouter, Route, Link} from 'react-router-native';
 import videoPageComponent from './videoComponent';
-
+import MainContainer from '../containers/mainContainer';
+import TreeContainer from '../containers/treeContainer';
+import {Container} from 'native-base';
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#e9967a',
-    padding: 10
-    
   },
   wokeText: {
     fontFamily: 'Courier',
@@ -33,43 +30,12 @@ const styles = StyleSheet.create({
 const stayWoke = () => {
   return (
     <NativeRouter>
-      <View style={styles.container}>
-        <View style={styles.nav}>
-        <Link
-          to="/stay"
-          style={styles.navItem} 
-        >
-          <Text> MainPage </Text>
-        </Link>
-        <Link
-          to="/woke"
-          style={styles.navItem} 
-        >
-          <Text> Woke </Text>
-        </Link>
-        <Link
-          to="/"
-          style={styles.navItem} 
-        >
-          <Text> Settings </Text>
-        </Link>
-      </View>
-        <Route exact path="/" component={mainComponent}/>
-        <Route path="/stay" component={mainComponent}/>
-        <Route path="/woke" component={videoPageComponent}/>
-      </View>
+      <Container> 
+        <Route exact path="/" component={MainContainer}/>
+        <Route path="/intree" component={TreeContainer}/>
+      </Container>
     </NativeRouter>
   );
 }
-const mainComponent = () => {
-  return (
-    <View style = {styles.container}>
-      <Text style = {styles.wokeText}> Maricris and Daniel Present </Text>
-      <Text style= {styles.wokeText, styles.largeText} > Stay Woke </Text>
-      <Text style = {styles.wokeText}> (with React and Redux) </Text>
-    </View>
-  )
-}
-
 
 export default stayWoke
